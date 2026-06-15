@@ -1,0 +1,37 @@
+name: Monthly Public Source Check
+
+on:
+  schedule:
+    # 毎月1日 09:00 JST = 毎月1日 00:00 UTC
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-public-sources:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check public source URLs
+        run: python data/tools/public-data/check_public_sources.py
+
+      - name: Show generated report
+        run: |
+          echo "## Latest report"
+          cat data/knowledge/public-data/source-check-latest.md
+
+      - name: Commit report updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: update monthly public source check report"
+          file_pattern: data/knowledge/public-data/reports/*.md data/knowledge/public-data/source-check-latest.md

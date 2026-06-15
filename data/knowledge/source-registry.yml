@@ -1,0 +1,142 @@
+version: 1
+policy:
+  storage_scope: repository-local-only
+  raw_content_storage: summary-first
+  full_copy: only_if_license_allows
+  update_cycle: monthly_or_project_start
+  citation_required: true
+  prefer_sources:
+    - official_docs
+    - standards
+    - public_agency
+  avoid_as_rules:
+    - personal_blogs
+    - unsourced_social_posts
+    - old_tutorials
+    - vendor_marketing_without_docs
+
+sources:
+  ai_and_claude_code:
+    - id: anthropic_learn
+      name: Anthropic Learn
+      url: https://www.anthropic.com/learn
+      priority: S
+      use_for: [ai_fluency, claude, claude_code, mcp, api_development]
+    - id: anthropic_docs
+      name: Anthropic Docs
+      url: https://docs.anthropic.com/
+      priority: S
+      use_for: [claude_api, prompt_engineering, claude_code, skills, hooks, subagents]
+    - id: openai_docs
+      name: OpenAI Developers Docs
+      url: https://developers.openai.com/
+      priority: S
+      use_for: [api, prompting, agents, rag, evals]
+    - id: openai_cookbook
+      name: OpenAI Cookbook
+      url: https://developers.openai.com/cookbook
+      priority: S
+      use_for: [implementation_examples, rag, evaluations]
+    - id: google_ai_developers
+      name: Google AI for Developers
+      url: https://ai.google.dev/
+      priority: S
+      use_for: [gemini_api, structured_outputs, grounding, safety]
+  system_development:
+    - id: mdn_web_docs
+      name: MDN Web Docs
+      url: https://developer.mozilla.org/
+      priority: S
+      use_for: [html, css, javascript, http, web_api]
+    - id: web_dev
+      name: web.dev
+      url: https://web.dev/
+      priority: S
+      use_for: [performance, accessibility, security, frontend]
+    - id: php_manual
+      name: PHP Manual
+      url: https://www.php.net/manual/
+      priority: S
+      use_for: [php_language, runtime, standard_functions]
+    - id: laravel_docs
+      name: Laravel Docs
+      url: https://laravel.com/docs
+      priority: S
+      use_for: [routing, blade, authentication, authorization, validation, migration, eloquent, testing]
+    - id: mysql_docs
+      name: MySQL Reference Manual
+      url: https://dev.mysql.com/doc/
+      priority: S
+      use_for: [database_design, sql, index, transaction, backup, performance]
+    - id: openapi_spec
+      name: OpenAPI Specification
+      url: https://swagger.io/specification/
+      priority: S
+      use_for: [api_definition, api_documentation, api_testing]
+  security_and_governance:
+    - id: owasp_top10
+      name: OWASP Top 10
+      url: https://owasp.org/www-project-top-ten/
+      priority: S
+      use_for: [web_security]
+    - id: owasp_asvs
+      name: OWASP ASVS
+      url: https://owasp.org/www-project-application-security-verification-standard/
+      priority: S
+      use_for: [security_requirements, verification]
+    - id: owasp_wstg
+      name: OWASP Web Security Testing Guide
+      url: https://owasp.org/www-project-web-security-testing-guide/
+      priority: S
+      use_for: [security_test_cases]
+    - id: owasp_laravel_cheatsheet
+      name: OWASP Laravel Cheat Sheet
+      url: https://cheatsheetseries.owasp.org/cheatsheets/Laravel_Cheat_Sheet.html
+      priority: S
+      use_for: [laravel_security]
+    - id: owasp_llm_top10
+      name: OWASP Top 10 for LLM Applications
+      url: https://genai.owasp.org/llm-top-10/
+      priority: S
+      use_for: [llm_security]
+    - id: ipa_secure_website
+      name: IPA 安全なウェブサイトの作り方
+      url: https://www.ipa.go.jp/security/vuln/websecurity/
+      priority: S
+      use_for: [japanese_web_security]
+    - id: ipa_nonfunctional_requirements
+      name: IPA 非機能要求グレード
+      url: https://www.ipa.go.jp/archive/digital/iot-en-ci/jyouryuu/hikinou/
+      priority: S
+      use_for: [nonfunctional_requirements]
+  design_and_operations:
+    - id: wcag_22
+      name: W3C WCAG 2.2
+      url: https://www.w3.org/TR/WCAG22/
+      priority: S
+      use_for: [accessibility]
+    - id: github_docs
+      name: GitHub Docs
+      url: https://docs.github.com/
+      priority: S
+      use_for: [git, actions, api]
+    - id: docker_docs
+      name: Docker Docs
+      url: https://docs.docker.com/
+      priority: S
+      use_for: [local_environment, container]
+    - id: playwright_docs
+      name: Playwright Docs
+      url: https://playwright.dev/
+      priority: S
+      use_for: [e2e_testing]
+    - id: material_design
+      name: Material Design
+      url: https://m3.material.io/
+      priority: A
+      use_for: [ui_components, layout]
+    - id: govuk_design_system
+      name: GOV.UK Design System
+      url: https://design-system.service.gov.uk/
+      priority: A
+      use_for: [forms, error_messages, patterns]

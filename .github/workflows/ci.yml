@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  repository-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check sensitive files
+        run: |
+          if git ls-files | grep -E '(^|/)\.env$|\.pem$|\.key$|\.p12$|\.pfx$'; then
+            echo "Sensitive file detected"
+            exit 1
+          fi
+
+      - name: Check core structure
+        run: |
+          test -f CLAUDE.md
+          test -f README.md
+          test -f BUSINESS_DOMAIN_STRUCTURE.md
+          test -f .claude/CLAUDE.md
+          test -f .claude/settings.json
+          test -d .claude/hooks
+          test -d .claude/skills
+          test -d work
+          test -f work/README.md
+          test -d data
+          test -d data/memory
+          test -d data/knowledge
+          test -f data/knowledge/source-registry.yml
+          test -d data/knowledge/public-data
+          test -d data/knowledge/rules
+          test -d data/ui
+          test -d data/tools
+          test -d data/logs
+
+      - name: Check Python syntax
+        run: |
+          python -m py_compile data/tools/public-data/check_public_sources.py
