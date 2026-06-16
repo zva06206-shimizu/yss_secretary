@@ -23,13 +23,23 @@ build/
 *.swp
 .vscode/
 
-# 顧客の現地調査 生写真（IP・パスワード・シリアル等が写り込むため git には上げない）
-# ローカルには残り Claude Code が読める。索引(.md)とマスク済み報告書だけをコミットする。
+# 顧客の現地調査 生写真・機密資料（IP・パスワード・PIN・シリアル等が含まれるため git には上げない）
+# ローカルには残り Claude Code が読める。索引(.md)とマスク済み成果物だけをコミットする。
+# raw-photos 配下は画像をサブフォルダ含め全て除外（README.md / *-index.md は許可）
+work/**/raw-photos/**/*.jpg
+work/**/raw-photos/**/*.jpeg
+work/**/raw-photos/**/*.png
+work/**/raw-photos/**/*.heic
 work/**/raw-photos/*.jpg
 work/**/raw-photos/*.jpeg
-work/**/raw-photos/*.JPG
-work/**/raw-photos/*.JPEG
 work/**/raw-photos/*.png
-work/**/raw-photos/*.PNG
 work/**/raw-photos/*.heic
-work/**/raw-photos/*.HEIC
+work/**/raw-photos/**/*.JPG
+work/**/raw-photos/**/*.JPEG
+work/**/raw-photos/**/*.PNG
+work/**/raw-photos/**/*.HEIC
+# 機密を含む提案元データ（IP一覧・ログイン情報・PINなど）。成果物の提案書本体は別途判断。
+work/**/06_data/proposal/**/*_IP_*.pdf
+work/**/06_data/proposal/**/*PINコード*
+# ログイン情報・IP台帳など秘匿の作業ファイル（ローカルのみ・git管理外）
+work/**/credentials/
