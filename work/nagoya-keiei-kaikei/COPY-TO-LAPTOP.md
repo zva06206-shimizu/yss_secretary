@@ -14,7 +14,7 @@
 
 | ファイル | 中身 | 重要度 |
 |---|---|---|
-| **5gou-survey-worksheet.xlsx** | 5号館 当日記入Excel（機器/IP/ログイン/IP照合/スクショ貼付） | ★当日これを開いて埋める |
+| **2gou / 5gou / 6gou-survey-worksheet.xlsx** | 各館 当日記入Excel（6シート:手順/機器/IP照合/スクショ貼付/物理配線/提案確認） | ★当日これを開いて埋める |
 | **field-worksheet.md** | 全館 機器一覧（型番/IP/ID/PW/接続先/Config取得欄） | ★最重要 |
 | **device-credentials.md** | 全機器の管理ID/PW/PIN/IPsec PSK/SSIDキー台帳 | ★最重要 |
 | **1gou_RTX830_config.txt** | 1号館RTX(ハブ)の全文config＝ターゲット構成の正本 | 参考・基準 |

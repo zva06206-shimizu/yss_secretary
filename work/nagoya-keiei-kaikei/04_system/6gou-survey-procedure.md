@@ -1,0 +1,31 @@
+# 6号館 当日確認手順（2026-06-23）
+
+対象：6号館（仲田2-17-5）。RTX1210 Meikei_BD6H（2F給湯室配電盤内）。**2F〜8Fと縦長／5Fがコア分配点**。VLAN1教員(192.168.2.0/24)・VLAN7/8生徒。
+記入用Excel：`06_data/credentials/6gou-survey-worksheet.xlsx`（★git管理外・6シート）。
+進め方の基本（STEP1〜6・作業区分・ロケーションコード・写真法）は [5gou-survey-procedure.md](5gou-survey-procedure.md) と共通。本書は6号館固有の重点のみ。
+
+## 進め方（共通STEPの要約）
+1. 型番でManaged/Unmanaged仕分け（BS-GS2016P=管理型コア→login／ELECOM EHCは型番で判定）
+2. 既知ID/PWでlogin→Configテキスト保存（RTX `show config` → `6gou_MeikeiBD6H_config.txt`／管理SWはエクスポート＋画面）。RTX admin PW=既知。
+3. AP（WAPM-1266R教員／WAPM-1166D生徒）は設定画面スクショ→Excel[3]
+4. IP事前リスト照合（Excel[2]）
+5. 無管理SW（ELECOM EHC等）は物理のみ
+6. FortiGateは物理結線を最優先
+
+## 6号館 固有の重点確認
+- [ ] **RTX1210は給湯室配電盤内**＝**発熱・収容の物理リスク**を必ず写真と所見で（移設提案の根拠）。
+- [ ] **5Fコア(BS-GS2016P)が各階分配点**→**3F/4F/6F IDFが本当に「機材無し」か**・5Fから各階への**幹線経路の実態**。
+- [ ] **RTX830(21系)の正体**：2号館NMACRT02とホスト名重複表記→6号館に実機があるか／共用／資料取り違え。
+- [ ] **教員VLAN1と生徒VLAN7/8の分離**：物理かタグか・通信制御（2F-7F/8F不可、7F-8F可）の実機確認。**管理型はBS-GS2016Pのみ**＝タグ収容はこことRTXに集中。
+- [ ] **VLAN1 DHCP終端 .120 or .92** の食い違いを実機で確定。
+- [ ] **FortiGate**：結線・稼働・ライセンス（撤去/バイパス疑い）。
+- [ ] **縦長2F-8F＝動線が長い**。各階で見出し写真を徹底し迷子防止。
+
+## 機器ごとの作業（概要・詳細はExcel[1]）
+- ①Config-text：RTX1210 Meikei_BD6H、BS-GS2016P（5Fコア）／ELECOM EHCは管理型と判明時のみ
+- ②スクショ：WAPM-1266R（教員3F-8F）、WAPM-1166D（生徒3F/7F/8F）、サーバ、FortiGate（稼働時）
+- ③物理のみ：ELECOM EHC-F05PA-B/F08PA-B（無管理の場合）
+- ④探索：RTX830(21系)の実機、ネットワークカメラ（資料に無し）、ONU現物
+
+## 提案（N-02）確認ポイント
+Excel[5_提案確認ポイント]参照。6号館は特に**給湯室盤内ルータの移設**・**縦系幹線の冗長/速度**・**生徒網の分離強化**が提案の柱。共通解説は [5gou-survey-procedure.md](5gou-survey-procedure.md)。
