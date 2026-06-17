@@ -10,17 +10,18 @@
 
 ---
 
-## A. 最優先：認証情報（秘匿）　3ファイル・約36KB
-
-`work/nagoya-keiei-kaikei/06_data/credentials/`
+## A. 最優先：認証情報（秘匿）　`06_data/credentials/` フォルダ一式
 
 | ファイル | 中身 | 重要度 |
 |---|---|---|
-| **field-worksheet.md** | 当日持ち出し用 機器一覧（型番/IP/ID/PW/接続先/Config取得欄） | ★最重要・当日これを見ながら作業 |
+| **5gou-survey-worksheet.xlsx** | 5号館 当日記入Excel（機器/IP/ログイン/IP照合/スクショ貼付） | ★当日これを開いて埋める |
+| **field-worksheet.md** | 全館 機器一覧（型番/IP/ID/PW/接続先/Config取得欄） | ★最重要 |
 | **device-credentials.md** | 全機器の管理ID/PW/PIN/IPsec PSK/SSIDキー台帳 | ★最重要 |
-| README.md | フォルダの使い方 | 参考 |
+| **1gou_RTX830_config.txt** | 1号館RTX(ハブ)の全文config＝ターゲット構成の正本 | 参考・基準 |
+| README.md / _gen_5gou_worksheet.py | フォルダ説明 / Excel生成スクリプト | 参考 |
 
-> ⚠️ これだけは必ず持っていく。ただし**USB紛失＝情報漏洩**。暗号化USB or PCのローカルのみに置き、メール添付・クラウド共有はしない。
+> ⚠️ **credentialsフォルダごとコピー**すればOK（中身は全部git管理外）。ただし**USB紛失＝情報漏洩**。暗号化USB or PCローカルのみ、メール添付・クラウド共有はしない。帰宅後USBから消す。
+> ※5号館Excelは埋めると設定スクショ＝機微情報になる。filled版もcredentials内に保存すればgitに乗らない。
 
 ## B. 現地調査写真（資料binder）　164ファイル・約325MB
 
