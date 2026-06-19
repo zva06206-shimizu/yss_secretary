@@ -76,7 +76,7 @@ VPN中心ノード。RTX1210(NMACRT05)が VLAN1 office / VLAN2 school / VLAN3 lo
 |---|---|---|---|---|---|
 | 192.168.5.1 | ルータ/VPN | YAMAHA RTX1210 | NMACRT05 | 1F事務室 | office GW。他に .1.254 / .2.254 を各VLANで保持。最古機(2017/12)＝経年リスク |
 | 192.168.5.11 | AP | BUFFALO WAPM-2133TR | 1-5 | 1F事務所 | SSID=nkk5g-ap |
-| 192.168.5.12 | AP | BUFFALO WAPM-2133TR | 1-7 | 1F ラウンジ | |
+| 192.168.5.12 | AP | BUFFALO WAPM-2133TR | 1-7 | 1F ラウンジ | **管理IPはoffice/管理(.5)。部屋名がラウンジでもAP管理は.5**。ラウンジ利用者VLAN3(192.168.3.x)はSSID→VLANで決まる→当日SSIDマッピング確認(VLAN3紐づきSSID有無=orphan判定) |
 | 192.168.5.13 | AP | BUFFALO WAPM-1266R | 1-6 | 1F 休憩室 | |
 | 192.168.5.14 | PoE SW | BUFFALO BS-GS2008P | 1-4 | 1F IDF | |
 | 192.168.5.15 | AP（推測） | BUFFALO WAPM-1266R | 2F系 | 2F | IMG_2958にAP IP一覧。判読により**要現地確認** |
