@@ -30,12 +30,12 @@ flowchart TB
     INET((Internet<br/>ASAHIネット PPPoE))
     INET --- RT["YAMAHA RTX830 / NMACRT01 (2F)<br/>GW ＋ VPNハブ(→2/5/6号館 IPsec・スター)<br/>VLAN10/20/30/1 の各GW"]
 
-    subgraph CORE["2F コア"]
+    subgraph CORE["コア機器（2F: RTX/L2 ・ 4F: L3/NAS）"]
       direction TB
-      RT --- L3["BUFFALO BS-GS2008P (L3/PoE)<br/>192.168.0.241<br/>VLAN間ルーティング / タグ収容"]
-      RT --- L2C["BUFFALO BS-GS2016 (L2)<br/>192.168.0.250"]
-      L3 --- NAS["IODATA NAS HDL4A<br/>VLAN30 192.168.170.0/24"]
-      L3 --- AP2["AP WAPM-1266R (2F)<br/>SSID nmac-ap(学生)/1gou-jimu(職員)"]
+      RT --- L2C["BUFFALO BS-GS2016 (L2・2F)<br/>192.168.0.250"]
+      RT --- L3["BUFFALO BS-GS2008P (L3/PoE・4F)<br/>192.168.0.241<br/>VLAN間ルーティング / タグ収容"]
+      L3 --- NAS["IODATA NAS HDL4A (4F)<br/>VLAN30 192.168.170.0/24 (.240)"]
+      RT --- AP2["AP WAPM-1266R (2F)<br/>SSID nmac-ap(学生)/1gou-jimu(職員)"]
     end
 
     subgraph FLR["3F〜6F（各階 同一構成）"]
@@ -62,7 +62,7 @@ flowchart TB
 | 機器 | 役割 | IP | フロア |
 |---|---|---|---|
 | RTX830 NMACRT01 | GW・VPNハブ | 192.168.0.1（VLAN GW群） | 2F |
-| BS-GS2008P | L3/PoE コア（VLAN収容） | 192.168.0.241 | 2F |
+| BS-GS2008P | L3/PoE コア（VLAN収容） | 192.168.0.241 | 4F（NASと同所） |
 | BS-GS2016 | L2 | 192.168.0.250 | 2F |
 | WAPS-1266 | AP | 192.168.0.242 | 2F |
 | WAB-M1775-PS ×4 | 各階AP | 192.168.0.243〜.246 | 3F〜6F |
@@ -73,7 +73,11 @@ flowchart TB
 
 ## 注記・要確認（軽微）
 
-- 再構築doc(PDF)では階により「職用VLAN10 NW」(3F/4F)と「職用VLAN10・学生用VLAN20 NW」(5F/6F)の表記差がある。各階APは両SSIDを提供しているため、**VLAN20は各階APまで届く想定**だが、有線LANコネクタ側のVLAN割当は階で異なる可能性（資料表記差・要現地一致確認）。
+- **階によるVLAN表記差の正体（矛盾ではない）**：
+  - AP向けトランク(LSW6-GT-8NS→WAB-M1775-PS)は**全階「職用VLAN10・学生用VLAN20」＝VLAN10+20の相乗りタグドトランク**（各階APが nmac-ap=学生/1gou-jimu=職員 の両SSIDを提供）。
+  - 違うのは**有線LANコネクタ①〜⑥の表記**だけ：5F/6F=「職員用NW」、3F/4F=「職用VLAN10 NW」＝**文言ゆれで意味は同じ(職員=VLAN10)**。
+  - 設計意図＝**学生(VLAN20)は無線のみ、壁の有線ポートは職員(VLAN10)専用**。2Fだけ元栓でコネクタをVLAN10/20/30に分岐。NAS(VLAN30)は4F。
+  - 要確認は「中上階の壁有線にVLAN20が来ていないか(=学生有線が無いか)」程度。
 - RTX830 config(`credentials/1gou_RTX830_config.txt`)は基盤＋VPN部分。VLAN10/20/30の細部はSWのL3/タグ設定に依存（管理SW画面で確認）。
 - LSW6-GT-8NS の管理可否・タグ設定はモデル依存。1号館は**タグが通っている＝設計どおり機能している**前提（再構築済）。
 

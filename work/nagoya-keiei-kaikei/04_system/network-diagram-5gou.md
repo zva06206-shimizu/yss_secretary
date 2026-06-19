@@ -26,39 +26,54 @@
 
 ## 構成図（1F基点。教員=管理型 / 生徒=無管理カスケード の並走）
 
+フロアごとに枠で区切り、**教員系（管理型の縦系幹線＝太線）**と**生徒系（無管理カスケード＝点線）**の2本の縦系を分けて表示。
+
 ```mermaid
 flowchart TB
-    NTT["NTT終端 / ONU"]
-    NTT --> RT["YAMAHA RTX1210 / NMACRT05 (1F事務室)<br/>lan1.1=office 192.168.5.0/24<br/>lan1.2=school 192.168.1.0/24<br/>lan1.3=lounge 192.168.3.0/24"]
+    subgraph F1["■ 1F 事務室（基点）"]
+      direction TB
+      NTT["NTT終端 / ONU"] --> RT["RTX1210 NMACRT05<br/>lan1.1 office 192.168.5.0/24<br/>lan1.2 school 192.168.1.0/24<br/>lan1.3 lounge 192.168.3.0/24"]
+      RT --> FG["FortiGate-50E (UTM)<br/>※IP無=ﾄﾗﾝｽﾍﾟｱﾚﾝﾄ疑い・結線要確認"]
+      FG --> SV["MKSERVER FUJITSU<br/>192.168.5.x"]
+      FG --> ENH["入口HUB → プリンタ<br/>RICOH SG-720 / APEOS C3070"]
+      RT --> S1["BS-GS2008P (1F IDF・管理型)<br/>192.168.5.14"]
+      S1 --> A1["AP WAPM-2133TR/1266R<br/>事務/休憩/ラウンジ .5.11-13"]
+    end
 
-    %% ---- サーバ前段(FortiGate) ----
-    RT --> FG["FortiGate-50E (UTM)<br/>※IP無=ﾄﾗﾝｽﾍﾟｱﾚﾝﾄ疑い・結線要確認"]
-    FG --> SV["MKSERVER (FUJITSU PRIMERGY)<br/>192.168.5.x"]
-    FG --> OFH["事務所机HUB"]
-    FG --> ENH["入口HUB"]
-    ENH --> PR["プリンタ RICOH SG-720 / APEOS C3070"]
+    subgraph F2["■ 2F"]
+      direction TB
+      S2["BS-GS2008P (2F 教員・管理型)"] --> AT2["WAPM-1266R 教員AP (52A-D)"]
+      NG["NETGEAR gs324 ×2 ＋ ELECOM EHC/IODATA/LSW<br/>(52C・無管理カスケード A/B/C/D)"]
+      NG --> AS2["WAB-S1775 生徒AP (52A-D)<br/>school 192.168.1 / guest 192.168.169"]
+      WHT["白ケーブル不明1本"] -. 要追跡 .- NG
+      CAM["カメラ(資料に無し)"] -. 要探索 .- NG
+    end
 
-    %% ---- 教員系：管理型BS-GS2008Pの縦系 ----
-    RT --> SW1["BS-GS2008P (1F IDF・管理型)<br/>192.168.5.14"]
-    SW1 --> AP1["AP WAPM-2133TR/1266R (1F 事務/休憩/ラウンジ)<br/>192.168.5.11-13"]
-    SW1 == 幹線 ==> SW2["BS-GS2008P (2F・管理型)"]
-    SW2 == 幹線 ==> SW3["BS-GS2008P (3F)"]
-    SW3 == 幹線 ==> SW4["BS-GS2008P (4F)"]
-    SW2 --> APT2["WAPM-1266R 教員AP (52A-D)"]
-    SW3 --> APT3["WAPM-1266R 教員AP (53A-D)"]
-    SW4 --> APT4["WAPM-1266R 教員AP (54A-D)"]
+    subgraph F3["■ 3F"]
+      direction TB
+      S3["BS-GS2008P (3F・管理型)"] --> AT3["WAPM-1266R 教員AP (53A-D)"]
+      AS3["WAB-S1775 生徒AP (53A-D)"]
+    end
 
-    %% ---- 生徒系：無管理カスケード ----
-    RT -. "白色ケーブル(school)" .-> NG["NETGEAR gs324 ×2 (2F 52C・無管理)<br/>A/B/C/D カスケード"]
-    NG --- EHC["ELECOM EHC-G08/G16MN-HJW・IODATA・LSW (無管理)"]
-    NG --> APS2["WAB-S1775 生徒AP (52A-D)<br/>192.168.1系 / ゲスト192.168.169"]
-    EHC --> APS3["WAB-S1775 生徒AP (53A-D)"]
-    EHC --> APS4["WAB-S1775 生徒AP (54A-D)"]
-    WHT["白ケーブル不明1本"] -. 要追跡 .- NG
-    CAM["ネットワークカメラ(資料に無し)"] -. 要探索 .- NG
+    subgraph F4["■ 4F"]
+      direction TB
+      S4["BS-GS2008P (4F・管理型)"] --> AT4["WAPM-1266R 教員AP (54A-D)"]
+      AS4["WAB-S1775 生徒AP (54A-D)"]
+    end
+
+    %% 教員系：管理型の縦系幹線（太線）
+    RT == 教員幹線 ==> S1
+    S1 == 教員幹線 ==> S2
+    S2 == 教員幹線 ==> S3
+    S3 == 教員幹線 ==> S4
+
+    %% 生徒系：無管理カスケード（点線）
+    RT -. "白色ケーブル(生徒VLAN2)" .-> NG
+    NG -. 生徒幹線 .-> AS3
+    NG -. 生徒幹線 .-> AS4
 ```
 
-凡例：太線`==>`＝管理型SWの縦系幹線（教員）。点線`-.-`＝無管理カスケード/要確認の接続（生徒）。FortiGate配下＝サーバ＋事務有線（機微側）。wifiはFortiGate非経由。
+凡例：枠＝フロア。太線`==>`＝**教員系＝管理型BS-GS2008Pの縦系幹線**。点線`-.-`＝**生徒系＝2F無管理カスケード経由**（タグ制御なし）。FortiGate配下＝サーバ＋事務有線（機微側）、wifiはFortiGate非経由。**生徒APは全階あるが、上り幹線は2Fの無管理カスケードに集約**＝ボトルネック/単一障害点。
 
 ---
 
