@@ -5,6 +5,7 @@
 > ※出典：`04_system/existing-network-summary.md`、`06_data/photo-index.md`、構成図写真 IMG_8959(5号館)・IMG_8983/IMG_7870(6号館)・IMG_7847(全校VPN)。**資料ベース（仮説）。実態は6/23調査で確定**。
 > ※対象＝2号館・5号館・6号館。1号館は確定構成（対象外）のため参考表示。
 > ※**1号館の「清水による再構築・現状版」は別ファイル [network-diagram-1gou-rebuilt.md](network-diagram-1gou-rebuilt.md) を参照**（本ファイルの1号館は写真ベースの参考表示。再構築版がターゲット構成）。
+> ※**5号館の深掘り版（教員=管理型/生徒=無管理カスケードの並走・矛盾一覧つき）は [network-diagram-5gou.md](network-diagram-5gou.md)**。
 
 > ⚠️ **【最重要・FortiGateは図の通りに繋がっていない可能性が高い】**
 > 1号館のVLAN再構築時、**ネットワーク図上はFortiGateが接続されていたが、現場では実際には接続されていなかった**という経緯がある。
