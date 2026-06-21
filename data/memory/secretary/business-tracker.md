@@ -49,5 +49,6 @@
 
 - 案件横断の実行台帳 → [action-ledger.md](../company/action-ledger.md)
 - 経営課題スナップショット → [current-issues.md](../company/current-issues.md)
+- 入金・支払・引落の消込 → [payment-tracker.md](payment-tracker.md)
 - 資金繰り → [work/yss-cashflow](../../../work/yss-cashflow/05_operation/cashflow-2026H2.md)
 - Yutaka 個人（私的） → [personal-tracker.md](personal-tracker.md)
