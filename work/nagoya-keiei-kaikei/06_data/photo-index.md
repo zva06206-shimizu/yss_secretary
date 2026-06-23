@@ -92,20 +92,49 @@
 | IMG_9003 | 6号館 | 設定画面 | RTX1210(Meikei_BDGH 2/2) IPsec/Secure Filter ACL/syslog（事前共有鍵→credentials） | ☑ |
 | IMG_8972,8973,8976,8978,8979,8981,8982,8984,8985,8991,8994,8996,8997,9000(欠番含む) | 5/6号館 | 機器ラベル/書類連番 | AP仕様シート・IP割当表の連番。代表ページで把握済、個別転記不要 | ☐ |
 
-## 20260623（6/23 当日撮影＝5号館ラック/結線/機器ラベル/実機トレース。raw-photos/20260623-survey/5gou/）
+## 20260623（6/23 当日撮影＝5号館1F ルータ周り。ラック/結線/機器ラベル/実機トレース。raw-photos/20260623-survey/5gou/）
 
-> ファイル名は当日iPhone連番（IMG_xxxx）を「ファイル名」欄に記入 → クロエが `5-1F-...` にリネーム。機微（IP/PW/SSIDキー）が写るスクショは raw に置けばgit管理外のまま。AP設定スクショはExcel[3_スクショ貼付]、IP/config実値はworksheet/credentials側へ。
+> 当日iPhone連番を「ファイル名」に記入→クロエが `5-1F-...` にリネーム。機微（S/N・MAC・IP・PW）が写るものは raw=git管理外のまま、台帳実値は `credentials/device-credentials.md` へ。
+> ★この14枚で**5号館1Fコアの物理が確定**：WAN=RTX **LAN2**(赤/2F ONU由来)、office=RTX LAN1→FG-40F(インライン透過)→LSW2(100M)→機器、サーバ=EHC経由でFG配下。**I-O DATA USB-HDD(バックアップ)を新規発見**。
 
-| ファイル名 | 場所/号館 | カテゴリ | 写っているもの（メモ） | リネーム案 | 報告書へ転記 |
+| ファイル名 | 場所 | カテゴリ | 写っているもの | リネーム案 | 転記 |
 |---|---|---|---|---|---|
-| (要記入) | 5号館1F | cabling | **RTX1210背面**。WAN(赤)＝2F ONUから／LAN1:1 office・LAN1:2 school・LAN1:3 lounge のラベル＋結線 | 5-1F-rack-rtx-rear | ☑ |
-| (要記入) | 5号館1F | device-label | **FortiGate FG-40F 本体ラベル**。Model FG-40F／SN・MAC（管理情報→credentials） | 5-1F-fg-label | ☑ |
-| (要記入) | 5号館1F | cabling | **FG-40F背面結線**。WAN(白)→RTX LAN1:1 office／internal(黄)→LSW2／隣→EHC＝**インライン透過の物理証拠** | 5-1F-fg-cabling | ☑ |
-| (要記入) | 5号館1F | device-label | **Buffalo LSW2-TX-16NSRR ラベル**。16ポート/100M級/アンマネージド/SN | 5-1F-lsw2-label | ☑ |
-| (要記入) | 5号館1F | device-label | **ELECOM EHC-F05PA-JB**（サーバ横・5ポート小HUB） | 5-1F-ehc-label | ☐ |
-| (要記入) | 5号館1F | rack | **ラック全景**。下段=RTX1210＋LSW2／中段=FG-40F／上段=Fujitsuサーバ＋EHC／OMRON BN50T(UPS) | 5-1F-rack-overview | ☑ |
-| (要記入) | 5号館1F | server | **Fujitsu PRIMERGY サーバ**（上段）。EHC経由でFG配下 | 5-1F-server | ☑ |
-| (要記入) | 5号館2F | cabling | **2F ONU**（WAN導入元）＝撮影していれば | 5-2F-onu | ☐ |
+| (記入) | 5-1F | rack | **Buffalo LSW2-TX-16NSRR LEDパネル**。凡例=**100/10/ACT・FD/COL＝Fast Ethernet(100M)確証**。ポート1,2,5-8他 多数Link＝office主幹線が100Mで稼働 | 5-1F-lsw2-led | ☑ |
+| (記入) | 5-1F | rack | **ラック全景(縦)**。FG-40F(LED点灯)／RTX1210(青)／ONU／電源タップ | 5-1F-rack-overview | ☑ |
+| (記入) | 5-1F | cabling | **FG黄(internal)→LSW2** トレース | 5-1F-fg-to-lsw2 | ☑ |
+| (記入) | 5-1F | server | **ELECOM EHC-F05PA-JB**(POWER/LOOP/1-5 LED)＋サーバ周り。下段にONU白箱 | 5-1F-ehc-server | ☑ |
+| (記入) | 5-1F | rack | **OMRON BN50T(UPS, S/N AOW17109137700G→cred)＋Fujitsu PRIMERGY TX1310 M5**。下段=ONU白箱＋小型機＋予備ケーブル | 5-1F-ups-server | ☑ |
+| (記入) | 5-1F | cabling | **RTX1210 LAN1ポート**。port1=黄「元:RTX1210 LAN1:1 office」、port2/3=青 | 5-1F-rtx-lan1 | ☑ |
+| (記入) | 5-1F | device-label | **FortiGate FG-40F 底面ラベル**。Model FG-40F／SN FGT40FTK23001296／MAC 84:39:8F:79:04:EA／製造2023-03-07／HWID／PN（→cred） | 5-1F-fg-label | ☑ |
+| (記入) | 5-1F | cabling | **RTX1210 背面ラベル**。LAN2:WAN(赤)／LAN1:2 school／LAN1:3 lounge | 5-1F-rtx-labels | ☑ |
+| (記入) | 5-1F | cabling | **RTX1210 背面**。WANラベル＋LAN2(赤・Link点灯)／ISDN S/T／microSD＝**WANはLAN2**(config `pppoe use lan2` と一致) | 5-1F-rtx-wan-lan2 | ☑ |
+| (記入) | 5-1F | cabling | **RTX1210 背面**。WAN(赤)＋LAN1:1 office/1:2 school/1:3 lounge ラベル＋結線 | 5-1F-rtx-lan1-labels | ☑ |
+| (記入) | 5-1F | rack | **RTX1210(青)側面**。STANDBY/ON電源＋予備ケーブル束＋白箱(終端機?要確認) | 5-1F-rtx-side | ☐ |
+| (記入) | 5-1F | device-label | **I-O DATA HDJA-UT2RW(2TB USB-HDD, S/N 11UD0231653W→cred)**＝サーバ外付けバックアップと推定。**新規発見** | 5-1F-iodata-hdd | ☑ |
+| (記入) | 5-1F | server | **PRIMERGY 背面**。NIC1本(青・Link点灯)＋手書き連番ラベル(1-7)＋鍵。VGA/DP/USB | 5-1F-server-rear | ☑ |
+
+### 2F PoE 配電盤内（WAN入口＋教員/生徒 PoE分配）
+
+> ★WANチェーン確定：**光 → GE-ONU → OG410Xa(NTT HGW/ひかり電話) → 赤ケーブル → 1F RTX1210 WAN(LAN2)**。OG410XaはPPP=消灯(=RTXがPPPoE終端)・VoIP/WAN=点灯。
+> ★2F配電盤は**教員系と生徒系でPoEスイッチが物理分離**：BS-GS2008P(2F-PoE=教員/office/Gigabit)と「生徒用AP PoEHUB」(生徒/school)。
+
+| ファイル名 | 場所 | カテゴリ | 写っているもの | リネーム案 | 転記 |
+|---|---|---|---|---|---|
+| (記入) | 5-2F | panel | **2F配電盤 全景**。扉に生徒用AP PoEHUB、盤内にOG410Xa/ONU/BS-GS2008P＋空調ダクト | 5-2F-panel-overview | ☑ |
+| (記入) | 5-2F | device-label | **NTT GE-ONU**(光終端)。認証/UNI/光回線/登録/電源 緑点灯 | 5-2F-geonu | ☑ |
+| (記入) | 5-2F | device-label | **NTT OG410Xa(HGW/ひかり電話)** LEDパネル。POWER/CONFIG/VoIP/WAN=緑、**PPP=消灯**＝RTXがPPPoE。2018/12製 | 5-2F-og410xa-led | ☑ |
+| (記入) | 5-2F | device-label | **OG410Xa 背面ラベル**。MAC 6C:E4:DA:39:FE:6F／製番H8Z124568K10／認証DE140113003（→cred） | 5-2F-og410xa-label | ☑ |
+| (記入) | 5-2F | cabling | **OG410Xa 側面**。**赤ケーブル(WAN)＝RTXへの上り**＋電話系パンチダウン | 5-2F-og410xa-wan | ☑ |
+| (記入) | 5-2F | device-label | **BUFFALO BS-GS2008P**「8-Port Gigabit Switch・PoE」(2F-PoE黄ラベル)＝教員/office系・**Gigabit** | 5-2F-bsgs2008p-label | ☑ |
+| (記入) | 5-2F | cabling | **BS-GS2008P(2F-PoE)** 青ケーブル＝52A/52B/52C/52D(教員AP)＋**1F PoE/3F PoE(幹線)**。LED多数Link | 5-2F-bsgs2008p-cabling | ☑ |
+| (記入) | 5-2F | device-label | **「生徒用AP PoEHUB」**(navy)前面LED(POWER緑/LINK/PoE) | 5-2F-student-poehub-led | ☑ |
+| (記入) | 5-2F | cabling | **生徒用AP PoEHUB** 白ケーブル＝生徒用AP 52A/52C＋**1F〜2F幹線**(CAT5e NIPPON SEISEN) | 5-2F-student-poehub-cabling | ☑ |
+
+### 1F PoE SW 配電盤内（※写真 受領待ち）
+
+| ファイル名 | 場所 | カテゴリ | 写っているもの | リネーム案 | 転記 |
+|---|---|---|---|---|---|
+| (受領待ち) | 5-1F | panel | 1F PoE SW 配電盤 | 5-1F-poe-panel | ☐ |
 
 ## 撮影サマリ
 - 総枚数：約160枚（202603 約57＋PIN png／2020-2023 60／2024 44）。
