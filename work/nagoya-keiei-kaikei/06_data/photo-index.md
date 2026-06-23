@@ -92,6 +92,21 @@
 | IMG_9003 | 6号館 | 設定画面 | RTX1210(Meikei_BDGH 2/2) IPsec/Secure Filter ACL/syslog（事前共有鍵→credentials） | ☑ |
 | IMG_8972,8973,8976,8978,8979,8981,8982,8984,8985,8991,8994,8996,8997,9000(欠番含む) | 5/6号館 | 機器ラベル/書類連番 | AP仕様シート・IP割当表の連番。代表ページで把握済、個別転記不要 | ☐ |
 
+## 20260623（6/23 当日撮影＝5号館ラック/結線/機器ラベル/実機トレース。raw-photos/20260623-survey/5gou/）
+
+> ファイル名は当日iPhone連番（IMG_xxxx）を「ファイル名」欄に記入 → クロエが `5-1F-...` にリネーム。機微（IP/PW/SSIDキー）が写るスクショは raw に置けばgit管理外のまま。AP設定スクショはExcel[3_スクショ貼付]、IP/config実値はworksheet/credentials側へ。
+
+| ファイル名 | 場所/号館 | カテゴリ | 写っているもの（メモ） | リネーム案 | 報告書へ転記 |
+|---|---|---|---|---|---|
+| (要記入) | 5号館1F | cabling | **RTX1210背面**。WAN(赤)＝2F ONUから／LAN1:1 office・LAN1:2 school・LAN1:3 lounge のラベル＋結線 | 5-1F-rack-rtx-rear | ☑ |
+| (要記入) | 5号館1F | device-label | **FortiGate FG-40F 本体ラベル**。Model FG-40F／SN・MAC（管理情報→credentials） | 5-1F-fg-label | ☑ |
+| (要記入) | 5号館1F | cabling | **FG-40F背面結線**。WAN(白)→RTX LAN1:1 office／internal(黄)→LSW2／隣→EHC＝**インライン透過の物理証拠** | 5-1F-fg-cabling | ☑ |
+| (要記入) | 5号館1F | device-label | **Buffalo LSW2-TX-16NSRR ラベル**。16ポート/100M級/アンマネージド/SN | 5-1F-lsw2-label | ☑ |
+| (要記入) | 5号館1F | device-label | **ELECOM EHC-F05PA-JB**（サーバ横・5ポート小HUB） | 5-1F-ehc-label | ☐ |
+| (要記入) | 5号館1F | rack | **ラック全景**。下段=RTX1210＋LSW2／中段=FG-40F／上段=Fujitsuサーバ＋EHC／OMRON BN50T(UPS) | 5-1F-rack-overview | ☑ |
+| (要記入) | 5号館1F | server | **Fujitsu PRIMERGY サーバ**（上段）。EHC経由でFG配下 | 5-1F-server | ☑ |
+| (要記入) | 5号館2F | cabling | **2F ONU**（WAN導入元）＝撮影していれば | 5-2F-onu | ☐ |
+
 ## 撮影サマリ
 - 総枚数：約160枚（202603 約57＋PIN png／2020-2023 60／2024 44）。
 - 主に撮れたもの：**設計binder（構成図・VLAN/アドレス設計・機器一覧・各機器の設定シート/ACL/IPsec）が大半**。物理ラックの全景・パッチパネル写真は少。2024 binderに一部、配電盤・IDFの配線写真あり。機器ラベルシート（ELECOM/BUFFALO AP）多数。
