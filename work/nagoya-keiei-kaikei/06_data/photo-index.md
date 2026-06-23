@@ -129,6 +129,7 @@
 | (記入) | 5-2F | cabling | **BS-GS2008P(2F-PoE)** 青ケーブル＝52A/52B/52C/52D(教員AP)＋**1F PoE/3F PoE(幹線)**。LED多数Link | 5-2F-bsgs2008p-cabling | ☑ |
 | (記入) | 5-2F | device-label | **「生徒用AP PoEHUB」**(navy)前面LED(POWER緑/LINK/PoE) | 5-2F-student-poehub-led | ☑ |
 | (記入) | 5-2F | cabling | **生徒用AP PoEHUB** 白ケーブル＝生徒用AP 52A/52C＋**1F〜2F幹線**(CAT5e NIPPON SEISEN) | 5-2F-student-poehub-cabling | ☑ |
+| (記入) | 5-2F | device-label | **生徒用AP PoEHUB 本体ラベル＝I-O DATA BSH-GP08MB**(8p Gigabit PoE/110W)。MAC 50:41:B9:42:00:B8／S/N 11VS00882KD。**IPスキャン .1.5(school/Hydra web)と一致＝管理機ありsmart SW**（→cred） | 5-2F-student-poehub-label | ☑ |
 
 ### 1F PoE SW 配電盤内（※写真 受領待ち）
 
