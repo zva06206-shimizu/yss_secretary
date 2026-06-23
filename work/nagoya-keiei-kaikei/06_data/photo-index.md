@@ -148,6 +148,17 @@
 | (記入) | 5-3F | cabling | **3F-PoE 青ケーブル**＝53A/53B/53C/53D(教員AP)＋**4F PoE(上トランク)/2F PoE(下トランク)**＝カスケード裏取り | 5-3F-cabling-labels | ☑ |
 | (記入) | 5-3F | cabling | **縦系riser(床貫通)**。各階間の幹線束＋空き管の現況＝home-run化/光化の可否材料 | 5-3F-riser | ☑ |
 
+### 4F 配電盤内（教員カスケードの最上＝終端）
+
+> ★4F-PoE(BS-GS2008P)は下りトランク「3F PoE」のみ・上りなし＝**教員/office縦系は 1F→2F→3F→4F で終端**。全階Gigabit BS-GS2008Pのカスケード確定。
+
+| ファイル名 | 場所 | カテゴリ | 写っているもの | リネーム案 | 転記 |
+|---|---|---|---|---|---|
+| (記入) | 5-4F | panel | **4F配電盤 全景**。端子台 54A-D＋BS-GS2008P(4F-PoE)＋Aichi UWC-4F(CATV)＋コンセント | 5-4F-panel-overview | ☑ |
+| (記入) | 5-4F | device-label | **BUFFALO BS-GS2008P(4F-PoE)** 前面LED。教員/office・Gigabit | 5-4F-bsgs2008p | ☑ |
+| (記入) | 5-4F | cabling | **4F-PoE 青ケーブル**＝54A/54B/54C/54D(教員AP)＋**3F PoE(下トランクのみ＝終端)** | 5-4F-cabling-labels | ☑ |
+| (記入) | 5-4F | cabling | **縦系riser(床貫通)** | 5-4F-riser | ☐ |
+
 ## 撮影サマリ
 - 総枚数：約160枚（202603 約57＋PIN png／2020-2023 60／2024 44）。
 - 主に撮れたもの：**設計binder（構成図・VLAN/アドレス設計・機器一覧・各機器の設定シート/ACL/IPsec）が大半**。物理ラックの全景・パッチパネル写真は少。2024 binderに一部、配電盤・IDFの配線写真あり。機器ラベルシート（ELECOM/BUFFALO AP）多数。
