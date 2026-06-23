@@ -92,6 +92,79 @@
 | IMG_9003 | 6号館 | 設定画面 | RTX1210(Meikei_BDGH 2/2) IPsec/Secure Filter ACL/syslog（事前共有鍵→credentials） | ☑ |
 | IMG_8972,8973,8976,8978,8979,8981,8982,8984,8985,8991,8994,8996,8997,9000(欠番含む) | 5/6号館 | 機器ラベル/書類連番 | AP仕様シート・IP割当表の連番。代表ページで把握済、個別転記不要 | ☐ |
 
+## 20260623（6/23 当日撮影＝5号館1F ルータ周り。ラック/結線/機器ラベル/実機トレース。raw-photos/20260623-survey/5gou/）
+
+> 当日iPhone連番を「ファイル名」に記入→クロエが `5-1F-...` にリネーム。機微（S/N・MAC・IP・PW）が写るものは raw=git管理外のまま、台帳実値は `credentials/device-credentials.md` へ。
+> ★この14枚で**5号館1Fコアの物理が確定**：WAN=RTX **LAN2**(赤/2F ONU由来)、office=RTX LAN1→FG-40F(インライン透過)→LSW2(100M)→機器、サーバ=EHC経由でFG配下。**I-O DATA USB-HDD(バックアップ)を新規発見**。
+
+| ファイル名 | 場所 | カテゴリ | 写っているもの | リネーム案 | 転記 |
+|---|---|---|---|---|---|
+| (記入) | 5-1F | rack | **Buffalo LSW2-TX-16NSRR LEDパネル**。凡例=**100/10/ACT・FD/COL＝Fast Ethernet(100M)確証**。ポート1,2,5-8他 多数Link＝office主幹線が100Mで稼働 | 5-1F-lsw2-led | ☑ |
+| (記入) | 5-1F | rack | **ラック全景(縦)**。FG-40F(LED点灯)／RTX1210(青)／ONU／電源タップ | 5-1F-rack-overview | ☑ |
+| (記入) | 5-1F | cabling | **FG黄(internal)→LSW2** トレース | 5-1F-fg-to-lsw2 | ☑ |
+| (記入) | 5-1F | server | **ELECOM EHC-F05PA-JB**(POWER/LOOP/1-5 LED)＋サーバ周り。下段にONU白箱 | 5-1F-ehc-server | ☑ |
+| (記入) | 5-1F | rack | **OMRON BN50T(UPS, S/N AOW17109137700G→cred)＋Fujitsu PRIMERGY TX1310 M5**。下段=ONU白箱＋小型機＋予備ケーブル | 5-1F-ups-server | ☑ |
+| (記入) | 5-1F | cabling | **RTX1210 LAN1ポート**。port1=黄「元:RTX1210 LAN1:1 office」、port2/3=青 | 5-1F-rtx-lan1 | ☑ |
+| (記入) | 5-1F | device-label | **FortiGate FG-40F 底面ラベル**。Model FG-40F／SN FGT40FTK23001296／MAC 84:39:8F:79:04:EA／製造2023-03-07／HWID／PN（→cred） | 5-1F-fg-label | ☑ |
+| (記入) | 5-1F | cabling | **RTX1210 背面ラベル**。LAN2:WAN(赤)／LAN1:2 school／LAN1:3 lounge | 5-1F-rtx-labels | ☑ |
+| (記入) | 5-1F | cabling | **RTX1210 背面**。WANラベル＋LAN2(赤・Link点灯)／ISDN S/T／microSD＝**WANはLAN2**(config `pppoe use lan2` と一致) | 5-1F-rtx-wan-lan2 | ☑ |
+| (記入) | 5-1F | cabling | **RTX1210 背面**。WAN(赤)＋LAN1:1 office/1:2 school/1:3 lounge ラベル＋結線 | 5-1F-rtx-lan1-labels | ☑ |
+| (記入) | 5-1F | rack | **RTX1210(青)側面**。STANDBY/ON電源＋予備ケーブル束＋白箱(終端機?要確認) | 5-1F-rtx-side | ☐ |
+| (記入) | 5-1F | device-label | **I-O DATA HDJA-UT2RW(2TB USB-HDD, S/N 11UD0231653W→cred)**＝サーバ外付けバックアップと推定。**新規発見** | 5-1F-iodata-hdd | ☑ |
+| (記入) | 5-1F | server | **PRIMERGY 背面**。NIC1本(青・Link点灯)＋手書き連番ラベル(1-7)＋鍵。VGA/DP/USB | 5-1F-server-rear | ☑ |
+
+### 2F PoE 配電盤内（WAN入口＋教員/生徒 PoE分配）
+
+> ★WANチェーン確定：**光 → GE-ONU → OG410Xa(NTT HGW/ひかり電話) → 赤ケーブル → 1F RTX1210 WAN(LAN2)**。OG410XaはPPP=消灯(=RTXがPPPoE終端)・VoIP/WAN=点灯。
+> ★2F配電盤は**教員系と生徒系でPoEスイッチが物理分離**：BS-GS2008P(2F-PoE=教員/office/Gigabit)と「生徒用AP PoEHUB」(生徒/school)。
+
+| ファイル名 | 場所 | カテゴリ | 写っているもの | リネーム案 | 転記 |
+|---|---|---|---|---|---|
+| (記入) | 5-2F | panel | **2F配電盤 全景**。扉に生徒用AP PoEHUB、盤内にOG410Xa/ONU/BS-GS2008P＋空調ダクト | 5-2F-panel-overview | ☑ |
+| (記入) | 5-2F | device-label | **NTT GE-ONU**(光終端)。認証/UNI/光回線/登録/電源 緑点灯 | 5-2F-geonu | ☑ |
+| (記入) | 5-2F | device-label | **NTT OG410Xa(HGW/ひかり電話)** LEDパネル。POWER/CONFIG/VoIP/WAN=緑、**PPP=消灯**＝RTXがPPPoE。2018/12製 | 5-2F-og410xa-led | ☑ |
+| (記入) | 5-2F | device-label | **OG410Xa 背面ラベル**。MAC 6C:E4:DA:39:FE:6F／製番H8Z124568K10／認証DE140113003（→cred） | 5-2F-og410xa-label | ☑ |
+| (記入) | 5-2F | cabling | **OG410Xa 側面**。**赤ケーブル(WAN)＝RTXへの上り**＋電話系パンチダウン | 5-2F-og410xa-wan | ☑ |
+| (記入) | 5-2F | device-label | **BUFFALO BS-GS2008P**「8-Port Gigabit Switch・PoE」(2F-PoE黄ラベル)＝教員/office系・**Gigabit** | 5-2F-bsgs2008p-label | ☑ |
+| (記入) | 5-2F | cabling | **BS-GS2008P(2F-PoE)** 青ケーブル＝52A/52B/52C/52D(教員AP)＋**1F PoE/3F PoE(幹線)**。LED多数Link | 5-2F-bsgs2008p-cabling | ☑ |
+| (記入) | 5-2F | device-label | **「生徒用AP PoEHUB」**(navy)前面LED(POWER緑/LINK/PoE) | 5-2F-student-poehub-led | ☑ |
+| (記入) | 5-2F | cabling | **生徒用AP PoEHUB** 白ケーブル＝生徒用AP 52A/52C＋**1F〜2F幹線**(CAT5e NIPPON SEISEN) | 5-2F-student-poehub-cabling | ☑ |
+| (記入) | 5-2F | device-label | **生徒用AP PoEHUB 本体ラベル＝I-O DATA BSH-GP08MB**(8p Gigabit PoE/110W)。MAC 50:41:B9:42:00:B8／S/N 11VS00882KD。**IPスキャン .1.5(school/Hydra web)と一致＝管理機ありsmart SW**（→cred） | 5-2F-student-poehub-label | ☑ |
+
+### 1F PoE 配電盤内（教員/office縦系の起点＝RTXへ合流）
+
+> ★1F-PoE(BS-GS2008P/Gigabit・黄ラベル「2F-1FPoE」)＝教員/office APの1F集約。**1F AP(事務所/ラウンジ/休憩室=.5.11-13)＋上り「2F PoE」(教員カスケードへ)＋「1F ルーター」(=RTXへ合流)**。
+> ★含意【確定・本人確認済】：APカスケードは「1F ルーター」で**RTXへ直接合流(FG非経由)**＝FG→LSW2ブランチとは別系統。→ **FGが実際に検査するのはLSW2側(サーバ等)のみ。教員AP全フロア＋1F office APはFGを通らない**。office VLANは1つのL2なので疎通はするが、FGの保護対象外。＝「UTM入ってます」の実効範囲はサーバ周りに限定。
+> ★注意：「ラウンジAP」は設置場所名で**office VLAN1(.5.12)**。lounge VLAN3(.3.x)とは別。
+
+| ファイル名 | 場所 | カテゴリ | 写っているもの | リネーム案 | 転記 |
+|---|---|---|---|---|---|
+| (記入) | 5-1F | panel | **1F-PoE BS-GS2008P 全景**(壁付・黄ラベル2F-1FPoE)＋青ケーブル束 | 5-1F-poe-overview | ☑ |
+| (記入) | 5-1F | cabling | **1F-PoE ケーブルラベル**＝職員室AP/休憩室AP/ラウンジAP/(カウンター)AP＋**2F PoE(上)＋1F ルーター(RTXへ)** | 5-1F-poe-cabling-labels | ☑ |
+| (記入) | 5-1F | device-label | **1F-PoE 前面LED/ポート**(BS-GS2008P・Gigabit・port1-4/7 Link) | 5-1F-poe-ports | ☑ |
+
+### 3F 配電盤内（教員/office 縦系＝BS-GS2008Pカスケード）
+
+> ★教員/office側の縦系は **BS-GS2008P(Gigabit)を 1F→2F→3F→4F でカスケード(数珠つなぎ)**。各階の青ケーブルに「2F PoE / 4F PoE」等の上下トランクラベル。＝スター(home-run)でなく**直列＝単一経路・冗長なし**。
+
+| ファイル名 | 場所 | カテゴリ | 写っているもの | リネーム案 | 転記 |
+|---|---|---|---|---|---|
+| (記入) | 5-3F | panel | **3F配電盤 全景**。端子台 53A-D/54A-C(教室分配)＋BS-GS2008P(3F-PoE)＋Aichi UWC-4F(CATV 4分岐器)＋電話/構内端子台＋電源 | 5-3F-panel-overview | ☑ |
+| (記入) | 5-3F | device-label | **BUFFALO BS-GS2008P(3F-PoE)** 前面LED。教員/office・Gigabit | 5-3F-bsgs2008p | ☑ |
+| (記入) | 5-3F | cabling | **3F-PoE 青ケーブル**＝53A/53B/53C/53D(教員AP)＋**4F PoE(上トランク)/2F PoE(下トランク)**＝カスケード裏取り | 5-3F-cabling-labels | ☑ |
+| (記入) | 5-3F | cabling | **縦系riser(床貫通)**。各階間の幹線束＋空き管の現況＝home-run化/光化の可否材料 | 5-3F-riser | ☑ |
+
+### 4F 配電盤内（教員カスケードの最上＝終端）
+
+> ★4F-PoE(BS-GS2008P)は下りトランク「3F PoE」のみ・上りなし＝**教員/office縦系は 1F→2F→3F→4F で終端**。全階Gigabit BS-GS2008Pのカスケード確定。
+
+| ファイル名 | 場所 | カテゴリ | 写っているもの | リネーム案 | 転記 |
+|---|---|---|---|---|---|
+| (記入) | 5-4F | panel | **4F配電盤 全景**。端子台 54A-D＋BS-GS2008P(4F-PoE)＋Aichi UWC-4F(CATV)＋コンセント | 5-4F-panel-overview | ☑ |
+| (記入) | 5-4F | device-label | **BUFFALO BS-GS2008P(4F-PoE)** 前面LED。教員/office・Gigabit | 5-4F-bsgs2008p | ☑ |
+| (記入) | 5-4F | cabling | **4F-PoE 青ケーブル**＝54A/54B/54C/54D(教員AP)＋**3F PoE(下トランクのみ＝終端)** | 5-4F-cabling-labels | ☑ |
+| (記入) | 5-4F | cabling | **縦系riser(床貫通)** | 5-4F-riser | ☐ |
+
 ## 撮影サマリ
 - 総枚数：約160枚（202603 約57＋PIN png／2020-2023 60／2024 44）。
 - 主に撮れたもの：**設計binder（構成図・VLAN/アドレス設計・機器一覧・各機器の設定シート/ACL/IPsec）が大半**。物理ラックの全景・パッチパネル写真は少。2024 binderに一部、配電盤・IDFの配線写真あり。機器ラベルシート（ELECOM/BUFFALO AP）多数。
