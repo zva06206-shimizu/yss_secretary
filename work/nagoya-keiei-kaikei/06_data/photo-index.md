@@ -131,11 +131,17 @@
 | (記入) | 5-2F | cabling | **生徒用AP PoEHUB** 白ケーブル＝生徒用AP 52A/52C＋**1F〜2F幹線**(CAT5e NIPPON SEISEN) | 5-2F-student-poehub-cabling | ☑ |
 | (記入) | 5-2F | device-label | **生徒用AP PoEHUB 本体ラベル＝I-O DATA BSH-GP08MB**(8p Gigabit PoE/110W)。MAC 50:41:B9:42:00:B8／S/N 11VS00882KD。**IPスキャン .1.5(school/Hydra web)と一致＝管理機ありsmart SW**（→cred） | 5-2F-student-poehub-label | ☑ |
 
-### 1F PoE SW 配電盤内（※写真 受領待ち）
+### 1F PoE 配電盤内（教員/office縦系の起点＝RTXへ合流）
+
+> ★1F-PoE(BS-GS2008P/Gigabit・黄ラベル「2F-1FPoE」)＝教員/office APの1F集約。**1F AP(事務所/ラウンジ/休憩室=.5.11-13)＋上り「2F PoE」(教員カスケードへ)＋「1F ルーター」(=RTXへ合流)**。
+> ★含意（要RTXポート確認）：APカスケードは「1F ルーター」でRTXへ合流＝**FG→LSW2ブランチとは別系統**。→ **FGの実保護範囲はLSW2側(サーバ等)に限られ、AP/カスケード系はFGを通らない可能性**。office VLANは1つのL2なので疎通はするが、FG検査対象から外れる。
+> ★注意：「ラウンジAP」は設置場所名で**office VLAN1(.5.12)**。lounge VLAN3(.3.x)とは別。
 
 | ファイル名 | 場所 | カテゴリ | 写っているもの | リネーム案 | 転記 |
 |---|---|---|---|---|---|
-| (受領待ち) | 5-1F | panel | 1F PoE SW 配電盤 | 5-1F-poe-panel | ☐ |
+| (記入) | 5-1F | panel | **1F-PoE BS-GS2008P 全景**(壁付・黄ラベル2F-1FPoE)＋青ケーブル束 | 5-1F-poe-overview | ☑ |
+| (記入) | 5-1F | cabling | **1F-PoE ケーブルラベル**＝職員室AP/休憩室AP/ラウンジAP/(カウンター)AP＋**2F PoE(上)＋1F ルーター(RTXへ)** | 5-1F-poe-cabling-labels | ☑ |
+| (記入) | 5-1F | device-label | **1F-PoE 前面LED/ポート**(BS-GS2008P・Gigabit・port1-4/7 Link) | 5-1F-poe-ports | ☑ |
 
 ### 3F 配電盤内（教員/office 縦系＝BS-GS2008Pカスケード）
 
