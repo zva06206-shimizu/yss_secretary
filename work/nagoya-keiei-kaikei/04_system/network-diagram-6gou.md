@@ -112,7 +112,7 @@ VLAN1(192.168.2.0/24)を作業PCからスキャン。**VLAN7/8はポートベー
 | サーバ | .2.252 | `WIN-RHPVE6NSR31`（FUJITSU PRIMERGY・Windows）★**6/23所見でFG迂回（EHB-UG2B08経由）＝UTM外** |
 | 5Fコア | .2.203 | BUFFALO BS-GS2016P（コアSW） |
 | 教員AP | .2.201/.202/.204〜.207 | WAPM-1266R（mini_httpd） |
-| 生徒AP | .2.200 | WAPM-1166D（※VLAN1に居る＝要確認。生徒網はVLAN7/8のはずだが管理IPはVLAN1の可能性） |
+| 2F机上AP | .2.200 | **WAPM-1166D（2F机上・むき出し・FG迂回）＝MAC照合で確定**。旧資料「3F生徒.200」は場所誤記＝同一1台。VLAN1(2.x)上＝生徒VLANでない。実SSID(教員nkk6g-ap/生徒NGOKAJP36)要画面確認 |
 | プリンタ | .2.21 / .2.243 | Brother HL-L2360D / Fujifilm複合機 |
 | 事務PC | .2.33/.40/.48(NMAC6-xx)・.2.80(mk606)・**.2.115(`NMAC_OZU`＝小津氏PC)** | 教職員端末 |
 | ★カメラ | .2.x **多数（TP-Link 5C:A6:E6 系）** | **Tapo C110 が大量にVLAN1（事務系）に同居** |
