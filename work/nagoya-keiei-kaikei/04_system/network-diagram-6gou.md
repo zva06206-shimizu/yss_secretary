@@ -94,8 +94,8 @@
   → **各VLANはRTXの別々の物理ポート群から出る**。だから縦riserには**VLANごとに別ケーブル**が走るはず（どの色がどのVLANか＝現地トレースの鍵）。
 - **VLAN間遮断をsecure filterで確定**：vlan1↔vlan7/8 は相互reject（filter71/81＝**2F教員↔7F/8F生徒は不可**、IMG_7870の通信制御図と一致）。一方 **vlan7↔vlan8 は遮断ルール無し＝7F-8F間は通信可**（図の「7F-8F間は可」と一致）。vlan1は 192.168.1/3（5号館school/lounge）宛もreject。
 - **「21系(RTX830)」の正体が判明＝6号館に実機なし**：configに192.168.21.xのローカルIFは無く、**`ip route 192.168.21.0/24 → tunnel1`（VPN経由で2号館へ到達するだけ）**。旧資料のホスト名重複は誤読。→ 要確認#1は解消。
-- **WAN**：pp1 PPPoE（ASAHI-Net `u6348kp945a@atson.net`）、lan2口、netvolante-dns `nmac6goukan01.aa0.netvolante.jp`、NATマスカレード。→ OG410XaがPPP消灯（自身PPPoEせず）と整合。
-- **VPN**：tunnel1 IPsec→1号館（180.235.35.50、local=6goukan、PSK→credentials）。**スター型ハブVPNのスポーク**。VPN越し到達＝192.168.0(1号館)/5(5号館)/21(2号館)/170(ゲスト?)。
+- **WAN**：pp1 PPPoE（ASAHI-Net・アカウント/netvolante-dns→credentials）、lan2口、NATマスカレード。→ OG410XaがPPP消灯（自身PPPoEせず）と整合。
+- **VPN**：tunnel1 IPsec→1号館（対向グローバルIP・local名=6goukan・PSK→credentials）。**スター型ハブVPNのスポーク**。VPN越し到達＝192.168.0(1号館)/5(5号館)/21(2号館)/170(ゲスト?)。
 - ⚠ **tunnel2＝保守用L2TP/IPsecリモートアクセスVPN**（anonymous・mschap-v2・user `mente001`・PSK→credentials・remote any）。**業者がダイヤルインで保守する口**＝**棚卸し対象のセキュリティ事項**（誰が使うPSK/アカウントか、不要なら停止）。
 - 管理：`telnetd host 192.168.0.1`＝**1号館の管理端末からのみtelnet許可**（現地PC不可・2号館と同型運用）。lan3=OffLine_LAN（未使用）。
 
@@ -206,12 +206,23 @@ flowchart TB
 4. ~~**教員VLAN1 / 生徒VLAN7・8の分離**：物理かタグか~~ ✅**完全確定（6/24）**：RTXポートベース分割（lan1.1-4=vlan1 / 1.5-6=vlan7 / 1.7-8=vlan8）＋secure filter遮断。**5Fコア BS-GS2016P(.2.203)はVLAN設定なし＝VLAN1のみ全Untagged**＝VLAN1専用スイッチ。→ **VLAN分離は「RTXポート分割＋VLANごと別物理ケーブル」だけで成立、タグVLANトランクは皆無**。
    - ✅**RTX LAN1 実装ポート（6/24 ダッシュボードLED）**：**port3=VLAN1（事務/教員・唯一の上り＝5Fコア+2F事務を集約）／port5=VLAN7（生徒7F系）／port7=VLAN8（生徒8F系）が稼働**。port1/2/4/6/8は未使用。→ **縦riserの3本=port3/5/7**。生徒網スキャンは空きの**port6(VLAN7)/port8(VLAN8)**から取得可。
 
-## ⚠ RTX インターフェースエラー（2026-06-24 要調査）
+## ⚠ RTX インターフェースエラー（2026-06-24 techinfo で原因確定）
 
-- RTXダッシュボードに警告2件：**「LAN1のエラーカウンタがカウントアップ」「LAN2のエラーカウンタがカウントアップ」**（2026/06/24 10:25）。
-- **実通信エラーが発生中**。原因候補：①速度/Duplexミスマッチ（**port5/7にオレンジLED＝100Mリンクの疑い**、G-100M半二重混在でエラー多発）②不良/劣化ケーブル・コネクタ ③不安定な民生機（WEX中継器が調査中に応答消失した実績あり）④LAN2＝WAN/PPPoE・対向(VG/ONU)リンク品質。
-- **要確認**：管理/詳細でカウンタ実数・主因IF・リンク速度(100M/1G)を確認し深刻度判定。配線/機器の劣化＝N-02の更改根拠にもなる。
-- RTX本体：FW Rev.14.01.16（2016）、起動2026/02/06（稼働約4.5ヶ月）、システム時刻はNTPで正常。
+> 出典：RTX1210 `show tech-support`（10:34取得）。実測値は [credentials/6gou_rtx1210_techinfo_extract](../06_data/credentials/6gou_rtx1210_techinfo_extract_20260624.md)。
+
+- **半二重ではない（旧仮説を訂正）**：`show status lan1` で全リンク**Full Duplex**確定。
+  - PORT3＝**1000BASE-T 全二重**（VLAN1上り・事務/5Fコア系）
+  - PORT5＝**100BASE-TX 全二重**（VLAN7上り・生徒7F系）
+  - PORT7＝**100BASE-TX 全二重**（VLAN8上り・生徒8F系）
+  - → オレンジLEDは**100Mリンクの表示**であって半二重ではない。**Duplexミスマッチ／衝突は無し**。
+- **エラーの正体＝受信オーバーフロー＋非対応パケット＋バッファ枯渇**（衝突系ではない）：
+  - LAN1：Non support packet **37,451,712** ／ Receive overflow **358,472**
+  - LAN2：Non support packet 7,626,030 ／ Receive overflow 2,269
+  - packet-buffer large group **allocation fail 374,897**
+  - → **高負荷時にRTXが取りこぼしている**＝CRC/配線不良ではなく、**フラットVLAN1の大量端末＋ブロードキャスト/マルチキャスト/IPv6でRTX1210が時々詰まる**像。致命傷ではないが、**2016年機が処理能力的に頭打ち＝N-02機器更改の客観根拠**。
+- **生徒VLAN上り(port5/7)は100Mbps**（事務系port3のみ1G）＝生徒網のバックボーンが100M頭打ち。
+- **DHCP容量リスク（show status dhcp）**：VLAN1スコープ（.2.2-.120）が **Leased 104 / 残15**＝**事務VLANのDHCPプール枯渇寸前**。カメラ(Tapo)＋事務PC＋AP＋サーバが1セグに密集した結果。**VLAN7/8はIPv4リース0**（生徒網は現状IPv4未取得・IPv6近隣のみVLAN7に多数）。
+- RTX本体：FW Rev.14.01.16（2016）、起動2026/02/06（稼働137日）、室温44℃、システム時刻はNTPで正常。tunnel1(→1号館)Online、tunnel2(L2TP保守)は設定のみ未接続。
 5. ~~**VLAN1 DHCP終端**：.120(config) or .92(図)の食い違い~~ ✅**確定：.2.2〜.120**（config実値）。
 9. ⚠ **保守用L2TP VPN(tunnel2 `mente001`)**：誰が使う口か・現用か・不要なら停止。PSK/アカウント→credentials。棚卸し対象。
 6. **FortiGate**：結線・稼働・ライセンス（撤去/バイパス疑い）。
