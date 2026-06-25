@@ -10,9 +10,10 @@
 
 ## 初期設定
 
-1. **通貨**：日本サインアップだと基準通貨をSGDに変更できない（base候補に出ない＝Zoho仕様）。
-   - **回避策＝基準はJPYのままでOK**。Settings > Currencies で **SGD・MYR を取引通貨として追加**し、顧客ごとに通貨指定すればSGD/MYR建て請求書を作れる。試作はこれで十分。
-   - 本番（澤田さん＝シンガポールでサインアップ）は基準通貨=SGDのはず。構築時に向こうの基準通貨だけ確認。
+1. **通貨**：基準通貨は **Organization Location（事業所在地）で決まる**（後から変更不可。出典: zoho.com/invoice/kb/general/change-base-currency.html）。
+   - **試作は Location=Singapore で組織を作り base=SGD にする**（本番と一致）。アカウント再作成は不要＝**同一アカウントで「組織を追加(New Organization)」して Location=Singapore を選ぶ**。1アカウント2組織まで（旧JPY組織は削除/放置）。
+   - SGD基準＋ Currencies で **JPY・MYR を取引通貨として追加** → 顧客ごとに通貨指定で混在請求。
+   - Singapore組織はGST設定が出る → 澤田さんは**非課税**なので税なし/0%運用を試作で確認（本番でそのまま使える）。
 2. Preferences > Invoices：割引 **At Line Item Level**／テンプレ言語 **英語**
 
 ## 「既存生徒」ひな型（仮データ）
