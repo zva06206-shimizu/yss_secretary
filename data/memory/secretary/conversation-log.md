@@ -102,3 +102,5 @@
 
 - 【2026-06-23 重大・セキュリティ】名古屋NW調査の過程で、**追跡(GitHub公開)ファイルに顧客の秘匿値が漏れてcommit/push済み**だったことが判明。漏洩値＝各館RTX/PoE/AP管理PW・IPsec PSK・L2TP・Wi-Fiキー・グローバルIP・FortiGate S/N/MAC。現行の作業ツリーは全てスクラブ済(実値はgit管理外の06_data/credentials/のみ)。**git履歴には旧コミットとして残存するが、リポジトリはprivate確定**＝露出範囲はアクセス者のみで実害小。方針確定：①ローテーションは**N-02機器入替時に全PW刷新**で旧値ごと無効化(それまで現状維持)②履歴改変(filter-repo)は手間に見合わず**実施しない**③再発防止＝**commit前に秘匿値grepゲート徹底**(PW/PSK/グローバルIP/MAC/SN)。
 - 【運用注意】このリポジトリには**自動記録フック(「chore: auto record Claude Code work」)が編集を自動commitする**。スクラブ前の秘匿値を巻き込む危険があるため、秘匿情報を扱う作業では編集→即grep→必要なら即修正を徹底する。
+
+- 【2026-06-25 YSS能力】YutakaはOmada OC200のクラウド遠隔管理（TP-Link Cloud Access＝無料）＋MFA(App Auth/Email Auth)を自宅で実機運用・検証済。＝顧客提案で「OC200買い切り＋無料クラウドで遠隔保守＝年額ゼロ」を実体験ベースで語れる。名古屋経営会計専門学校N-02の統合管理はこのOmada構成で行く方針。詳細は [[dotsync]]。
