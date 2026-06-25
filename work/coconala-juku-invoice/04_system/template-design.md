@@ -10,10 +10,16 @@
 
 ## 初期設定
 
-1. **通貨**：基準通貨は **Organization Location（事業所在地）で決まる**（後から変更不可。出典: zoho.com/invoice/kb/general/change-base-currency.html）。
-   - **試作は Location=Singapore で組織を作り base=SGD にする**（本番と一致）。アカウント再作成は不要＝**同一アカウントで「組織を追加(New Organization)」して Location=Singapore を選ぶ**。1アカウント2組織まで（旧JPY組織は削除/放置）。
-   - SGD基準＋ Currencies で **JPY・MYR を取引通貨として追加** → 顧客ごとに通貨指定で混在請求。
-   - Singapore組織はGST設定が出る → 澤田さんは**非課税**なので税なし/0%運用を試作で確認（本番でそのまま使える）。
+1. **通貨（重要・方針決定が必要）**：**Zoho Invoiceは多通貨非対応＝base通貨でしか請求できない**（公式FAQ確定: zoho.com/us/invoice/kb/general/multi-currency.html。無料/有料問わず）。
+   - 澤田さんの「SGD/JPY/MYR切替」は **無料Invoice 1組織では不可**。base通貨はOrganization Locationで決まり後から変更不可（change-base-currency.html）。
+   - **選択肢**：
+     - A. **通貨別に組織を分ける**（無料Invoice・1アカウント**2組織まで**）：SGD組織＋JPY組織＝枠ちょうど。MYRは3組織目＝枠超。運用は組織ごと分断＝手間増。
+     - B. **Zoho Books Elite/Ultimate**（有料・相手負担）：1組織で多通貨。ただし品目はbase通貨保存・為替換算→実額固定はPrice List/行編集。
+     - C. **Zoho Billing**（有料）：顧客ごと通貨＋定期課金。塾の月謝サブスクに好相性。
+   - **推奨**：まず **SGD組織（Location=Singapore）でコア（請求自動化）を無料完成**。JPY数名なら2組織目をJPY baseで。MYR/統合は規模を見て有料(B/C)へ＝フェーズ2。
+   - SGD(Singapore)組織はGST設定が出る → 澤田さんは**非課税**なので税なし/0%運用を試作で確認。
+
+> ⚠ 通貨はコア設計に影響。澤田さんに「通貨別の人数」「JPY/MYRは請求書もその通貨建てが必須か」を確認してから本構築。
 2. Preferences > Invoices：割引 **At Line Item Level**／テンプレ言語 **英語**
 
 ## 「既存生徒」ひな型（仮データ）
