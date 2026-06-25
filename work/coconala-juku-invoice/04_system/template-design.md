@@ -8,11 +8,12 @@
 - 「4種テンプレをコピー」の正体 ＝ **①PDF見た目テンプレ（英語・1〜2種）** ＋ **②内容のひな型を Clone / Recurring で使い回す**。
 - 固定額の生徒＝Recurring Invoice（自動）／変動の生徒＝ひな型をCloneして毎月編集（半自動）。
 
-## 初期設定（取引を作る前に）
+## 初期設定
 
-1. Organization Profile：基軸通貨 **SGD**（※取引前のみ変更可）
-2. Currencies：**JPY・MYR** を追加
-3. Preferences > Invoices：割引 **At Line Item Level**／テンプレ言語 **英語**
+1. **通貨**：日本サインアップだと基準通貨をSGDに変更できない（base候補に出ない＝Zoho仕様）。
+   - **回避策＝基準はJPYのままでOK**。Settings > Currencies で **SGD・MYR を取引通貨として追加**し、顧客ごとに通貨指定すればSGD/MYR建て請求書を作れる。試作はこれで十分。
+   - 本番（澤田さん＝シンガポールでサインアップ）は基準通貨=SGDのはず。構築時に向こうの基準通貨だけ確認。
+2. Preferences > Invoices：割引 **At Line Item Level**／テンプレ言語 **英語**
 
 ## 「既存生徒」ひな型（仮データ）
 
