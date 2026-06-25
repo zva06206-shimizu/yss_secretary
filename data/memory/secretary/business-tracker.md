@@ -45,6 +45,7 @@
 | 大垣精工 | スポット（6〜8月10万/月）→9月から30万＆長期の口約束 | 7月の社長プレゼンが転換の鍵。ペース合わせ | [clients/ogaki-seiko](../clients/ogaki-seiko.md) |
 | 名古屋経営会計専門学校 | ドットシンク配下。NW現状調査→入替提案 | 6/23調査→提案、受注見込み高 | [work/nagoya-keiei-kaikei](../../../work/nagoya-keiei-kaikei/) |
 | パーツ精工 | 副業（NW）。6/24 2次面談済・結果待ち（期限なし） | 3名最終面接の1人。役割が「全体伴走」→「NW工事担当（曖昧・一部不要）」へ縮小。不採用見込み濃厚かも。追わない方針 | [work/parts-seiko](../../../work/parts-seiko/) |
+| coconala塾（澤田・SG/MY） | **受注**（10万・税抜・単発）。シンガポール＆マレーシアの塾の請求書をZoho Invoice化 | キックオフ資料回収→自Zoho Oneで試作→相手環境へ招待構築。海外Zoho実績＝B03に整合 | [work/coconala-juku-invoice](../../../work/coconala-juku-invoice/) |
 
 ---
 
