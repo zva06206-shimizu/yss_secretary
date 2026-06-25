@@ -33,7 +33,7 @@
 | B03 | 新規開拓チャネルの設計（ドットシンク依存を下げる） | 営業 | High | 未着手 | [I001/I002](../company/current-issues.md) |
 | B04 | 運転資金バッファづくり（数ヶ月分・入金前倒し＋着手金/分割請求） | 資金 | Med | 進行中 | [I004](../company/current-issues.md) |
 | B05 | 家事按分の新居（大治町）再算定・改定版保存 | 税務 | Low | 未着手 | 転居で旧細則が前提ズレ [I007](../company/current-issues.md) |
-| B06 | パーツ精工 決済者面談の準備（BCP・ランサム・NW刷新を一枚で語る）＋日程連絡待ち | 営業 | High | 相手待ち | 6/18一次面談好感触 [work/parts-seiko](../../../work/parts-seiko/) |
+| B06 | パーツ精工 結果待ち（静観）。来ても役割/金額/出張が見合わねば辞退可 | 営業 | Low | 相手待ち | 6/24 2次面談で役割縮小・不採用見込み濃厚かも [work/parts-seiko](../../../work/parts-seiko/) |
 
 ---
 
@@ -44,7 +44,8 @@
 | ドットシンク | 収益のベース（30万＋税/月）。長期パートナー | 名古屋経営会計NW案件（取り分約70万）受注フォロー | [clients/dotsync](../clients/dotsync.md) |
 | 大垣精工 | スポット（6〜8月10万/月）→9月から30万＆長期の口約束 | 7月の社長プレゼンが転換の鍵。ペース合わせ | [clients/ogaki-seiko](../clients/ogaki-seiko.md) |
 | 名古屋経営会計専門学校 | ドットシンク配下。NW現状調査→入替提案 | 6/23調査→提案、受注見込み高 | [work/nagoya-keiei-kaikei](../../../work/nagoya-keiei-kaikei/) |
-| パーツ精工 | 副業（NW再構築アーキテクト）。6/18一次面談済・好感触 | 期待がNW刷新→BCP・ランサム含む幅広い伴走に拡大。次は決済者面談。新規開拓B03と整合 | [work/parts-seiko](../../../work/parts-seiko/) |
+| パーツ精工 | 副業（NW）。6/24 2次面談済・結果待ち（期限なし） | 3名最終面接の1人。役割が「全体伴走」→「NW工事担当（曖昧・一部不要）」へ縮小。不採用見込み濃厚かも。追わない方針 | [work/parts-seiko](../../../work/parts-seiko/) |
+| coconala塾（澤田・SG/MY） | **受注**（10万・税抜・単発）。シンガポール＆マレーシアの塾の請求書をZoho Invoice化 | キックオフ資料回収→自Zoho Oneで試作→相手環境へ招待構築。海外Zoho実績＝B03に整合 | [work/coconala-juku-invoice](../../../work/coconala-juku-invoice/) |
 
 ---
 
