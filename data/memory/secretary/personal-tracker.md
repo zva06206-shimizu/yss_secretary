@@ -48,3 +48,4 @@ Yutaka **個人（私的）**の「課題・やること・やらなくてはな
 - YSS事業のやること・予定 → [business-tracker.md](business-tracker.md)
 - パートナー飲食店 → [related-ventures/partner-restaurant.md](../related-ventures/partner-restaurant.md) ／ [work/partner-restaurant](../../../work/partner-restaurant/)
 - リスク台帳 → [risk-register.md](../company/risk-register.md)
+- 愛犬クーパー（飼育・住環境・健康・しつけ） → [personal/cooper-dog.md](../personal/cooper-dog.md)
