@@ -34,7 +34,7 @@
 | ID | 内容 | 区分 | 優先 | 状態 | メモ |
 |---|---|---|---|---|---|
 | B01 | 消費税の取り置きを積み増す（現在20万・不足気味） | 資金 | High | 進行中 | 今後の入金から優先 [cost-structure](../company/cost-structure.md) |
-| B02 | 税理士に確認3点（①56条＝パートナー家賃経費 ②2割特例＝2026最終年 ③消費税方針） | 税務 | High | 未着手 | [I005/I006](../company/current-issues.md) |
+| B02 | 税理士に確認（①56条＝パートナー名義の家賃／固定資産税／建物減価を事業按分でYutaka経費化できるか・56条の裏効果と建付け ②2割特例＝2026最終年 ③消費税方針） | 税務 | High | 未着手 | [I005/I006](../company/current-issues.md)・按分率13.2%は [expense-allocation-rules](../company/expense-allocation-rules.md) |
 | B03 | 新規開拓チャネルの設計（ドットシンク依存を下げる） | 営業 | High | 未着手 | [I001/I002](../company/current-issues.md) |
 | B04 | 運転資金バッファづくり（数ヶ月分・入金前倒し＋着手金/分割請求） | 資金 | Med | 進行中 | [I004](../company/current-issues.md) |
 | B05 | 家事按分の新居（大治町）再算定・改定版保存 | 税務 | Low | 未着手 | 転居で旧細則が前提ズレ [I007](../company/current-issues.md) |
