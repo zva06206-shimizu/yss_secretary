@@ -1,0 +1,30 @@
+name: stock-to-lark
+
+on:
+  schedule:
+    # UTC 06:40 = JST 15:40（東証15:30の引け直後）。平日のみ。
+    # ※ GitHub の cron は混雑時に数分〜十数分遅れる（早発火はしない）。
+    #    今回は「1日1回取れればOK」なので、多少押しても引け後データが揃い好都合。
+    - cron: "40 6 * * 1-5"
+  workflow_dispatch: {}   # 手動実行ボタンも有効化
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Fetch & upload
+        env:
+          LARK_APP_ID: ${{ secrets.LARK_APP_ID }}
+          LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
+          LARK_APP_TOKEN: ${{ secrets.LARK_APP_TOKEN }}
+          LARK_TABLE_ID: ${{ secrets.LARK_TABLE_ID }}
+        run: python fetch.py
