@@ -59,3 +59,8 @@ work/**/06_data/received/*.xls
 work/**/06_data/received/*.xlsm
 work/**/06_data/received/*.csv
 work/**/06_data/received/*.pdf
+work/**/06_data/received/**/*.txt
+work/**/06_data/received/**/*.jpg
+work/**/06_data/received/**/*.jpeg
+work/**/06_data/received/**/*.png
+work/**/06_data/received/**/*.db
