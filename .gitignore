@@ -43,3 +43,19 @@ work/**/06_data/proposal/**/*_IP_*.pdf
 work/**/06_data/proposal/**/*PINコード*
 # ログイン情報・IP台帳など秘匿の作業ファイル（ローカルのみ・git管理外）
 work/**/credentials/
+
+# 業務委託契約書などの原本PDF（住所・印影＝個人情報）。契約サマリ.md のみコミットする
+work/**/03_documents/*業務委託契約書*.pdf
+work/**/03_documents/*契約書*.pdf
+
+# 顧客から受領した生データ（Excel部材表/BOM・CSV等＝機密）。ローカルのみ。索引 README.md だけコミットする
+work/**/06_data/received/**/*.xlsx
+work/**/06_data/received/**/*.xls
+work/**/06_data/received/**/*.xlsm
+work/**/06_data/received/**/*.csv
+work/**/06_data/received/**/*.pdf
+work/**/06_data/received/*.xlsx
+work/**/06_data/received/*.xls
+work/**/06_data/received/*.xlsm
+work/**/06_data/received/*.csv
+work/**/06_data/received/*.pdf
