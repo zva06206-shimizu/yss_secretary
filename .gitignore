@@ -64,3 +64,8 @@ work/**/06_data/received/**/*.jpg
 work/**/06_data/received/**/*.jpeg
 work/**/06_data/received/**/*.png
 work/**/06_data/received/**/*.db
+
+# 部品構成ファイルの一覧ダンプ（三菱の図番を多数含む＝機密）。ローカルのみ
+work/**/file_list*.txt
+# 生成される SQLite DB（部品原価データ）。ローカルのみ
+work/**/*.db
