@@ -69,3 +69,7 @@ work/**/06_data/received/**/*.db
 work/**/file_list*.txt
 # 生成される SQLite DB（部品原価データ）。ローカルのみ
 work/**/*.db
+# 部品データを含む成果物Excel/CSV（Recursive_BOM_Matrix等・機密）。ローカルのみ
+work/**/04_system/**/*.xlsx
+work/**/04_system/**/*.xls
+work/**/04_system/**/*.csv
