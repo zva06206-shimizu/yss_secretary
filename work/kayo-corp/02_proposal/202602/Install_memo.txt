@@ -1,1 +1,0 @@
-C:\Temp\CitrixWorkspaceApp.exe /noreboot /includeSSON /ENABLE_SSON=Yes /AutoUpdateCheck=disabled ALLOWADDSTORE=A ALLOWSAVEPWD=A STARTMENUDIR=\CitrixWorkspace STORE0="NEGVADC;http://neg-ddc.nippon-eirich.co.jp/Citrix/NEG-VADC/discovery;on;NEGVADC"
