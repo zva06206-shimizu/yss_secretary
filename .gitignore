@@ -44,6 +44,9 @@ work/**/06_data/proposal/**/*PINコード*
 # ログイン情報・IP台帳など秘匿の作業ファイル（ローカルのみ・git管理外）
 work/**/credentials/
 
+# 個人の秘匿値（マイクロチップ暗証記号・各種PIN/パスワード等）。ローカルのみ・git管理外
+data/memory/**/.secrets/
+
 # 業務委託契約書などの原本PDF（住所・印影＝個人情報）。契約サマリ.md のみコミットする
 work/**/03_documents/*業務委託契約書*.pdf
 work/**/03_documents/*契約書*.pdf
